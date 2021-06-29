@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Session3FinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AssetOdometer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetID" Type="Int64" Nullable="false" />
+    <Property Name="ReadDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OdometerAmount" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Asset" Relationship="Self.FK_AssetOdometers_Assets" FromRole="AssetOdometers" ToRole="Assets" />
+  </EntityType>
+  <EntityType Name="Asset">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetSN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AssetName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DepartmentLocationID" Type="Int64" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int64" Nullable="false" />
+    <Property Name="AssetGroupID" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WarrantyDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="AssetOdometers" Relationship="Self.FK_AssetOdometers_Assets" FromRole="Assets" ToRole="AssetOdometers" />
+    <NavigationProperty Name="PMTasks" Relationship="Self.FK_PMTasks_Assets" FromRole="Assets" ToRole="PMTasks" />
+  </EntityType>
+  <EntityType Name="PMScheduleModel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PMScheduleTypeID" Type="Int64" />
+    <NavigationProperty Name="PMScheduleType" Relationship="Self.FK_PMScheduleModels_PMScheduleTypes" FromRole="PMScheduleModels" ToRole="PMScheduleTypes" />
+  </EntityType>
+  <EntityType Name="PMScheduleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PMScheduleModels" Relationship="Self.FK_PMScheduleModels_PMScheduleTypes" FromRole="PMScheduleTypes" ToRole="PMScheduleModels" />
+    <NavigationProperty Name="PMTasks" Relationship="Self.FK_PMTasks_PMScheduleTypes" FromRole="PMScheduleTypes" ToRole="PMTasks" />
+  </EntityType>
+  <EntityType Name="PMTask">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetID" Type="Int64" Nullable="false" />
+    <Property Name="TaskID" Type="Int64" Nullable="false" />
+    <Property Name="PMScheduleTypeID" Type="Int64" Nullable="false" />
+    <Property Name="ScheduleDate" Type="DateTime" Precision="0" />
+    <Property Name="ScheduleKilometer" Type="Int64" />
+    <Property Name="TaskDone" Type="Boolean" />
+    <NavigationProperty Name="Asset" Relationship="Self.FK_PMTasks_Assets" FromRole="PMTasks" ToRole="Assets" />
+    <NavigationProperty Name="PMScheduleType" Relationship="Self.FK_PMTasks_PMScheduleTypes" FromRole="PMTasks" ToRole="PMScheduleTypes" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_PMTasks_Tasks" FromRole="PMTasks" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PMTasks" Relationship="Self.FK_PMTasks_Tasks" FromRole="Tasks" ToRole="PMTasks" />
+  </EntityType>
+  <Association Name="FK_AssetOdometers_Assets">
+    <End Role="Assets" Type="Self.Asset" Multiplicity="1" />
+    <End Role="AssetOdometers" Type="Self.AssetOdometer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AssetOdometers">
+        <PropertyRef Name="AssetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMTasks_Assets">
+    <End Role="Assets" Type="Self.Asset" Multiplicity="1" />
+    <End Role="PMTasks" Type="Self.PMTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMTasks">
+        <PropertyRef Name="AssetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMScheduleModels_PMScheduleTypes">
+    <End Role="PMScheduleTypes" Type="Self.PMScheduleType" Multiplicity="0..1" />
+    <End Role="PMScheduleModels" Type="Self.PMScheduleModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMScheduleTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMScheduleModels">
+        <PropertyRef Name="PMScheduleTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMTasks_PMScheduleTypes">
+    <End Role="PMScheduleTypes" Type="Self.PMScheduleType" Multiplicity="1" />
+    <End Role="PMTasks" Type="Self.PMTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMScheduleTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMTasks">
+        <PropertyRef Name="PMScheduleTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMTasks_Tasks">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+    <End Role="PMTasks" Type="Self.PMTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMTasks">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Session3FinalEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AssetOdometers" EntityType="Self.AssetOdometer" />
+    <EntitySet Name="Assets" EntityType="Self.Asset" />
+    <EntitySet Name="PMScheduleModels" EntityType="Self.PMScheduleModel" />
+    <EntitySet Name="PMScheduleTypes" EntityType="Self.PMScheduleType" />
+    <EntitySet Name="PMTasks" EntityType="Self.PMTask" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <AssociationSet Name="FK_AssetOdometers_Assets" Association="Self.FK_AssetOdometers_Assets">
+      <End Role="Assets" EntitySet="Assets" />
+      <End Role="AssetOdometers" EntitySet="AssetOdometers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMTasks_Assets" Association="Self.FK_PMTasks_Assets">
+      <End Role="Assets" EntitySet="Assets" />
+      <End Role="PMTasks" EntitySet="PMTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMScheduleModels_PMScheduleTypes" Association="Self.FK_PMScheduleModels_PMScheduleTypes">
+      <End Role="PMScheduleTypes" EntitySet="PMScheduleTypes" />
+      <End Role="PMScheduleModels" EntitySet="PMScheduleModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMTasks_PMScheduleTypes" Association="Self.FK_PMTasks_PMScheduleTypes">
+      <End Role="PMScheduleTypes" EntitySet="PMScheduleTypes" />
+      <End Role="PMTasks" EntitySet="PMTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMTasks_Tasks" Association="Self.FK_PMTasks_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="PMTasks" EntitySet="PMTasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

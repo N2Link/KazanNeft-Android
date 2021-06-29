@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f96f578f94de4a8185ca9a8d9c6976b4" Name="Diagram1">
+        <EntityTypeShape EntityType="KazanNeftModel.AssetGroup" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.AssetOdometer" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Asset" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.AssetTransferLog" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.ChangedPart" Width="1.5" PointX="9.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.DepartmentLocation" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Department" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.EmergencyMaintenance" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Employee" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Location" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.OrderItem" Width="1.5" PointX="15" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Order" Width="1.5" PointX="12.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Part" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.PMScheduleModel" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.PMScheduleType" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.PMTask" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Priority" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.RockType" Width="1.5" PointX="15" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Supplier" Width="1.5" PointX="10.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Task" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.TransactionType" Width="1.5" PointX="10.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Warehouse" Width="1.5" PointX="10.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.WellLayer" Width="1.5" PointX="17.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.Well" Width="1.5" PointX="15" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="KazanNeftModel.WellType" Width="1.5" PointX="12.75" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="KazanNeftModel.FK_Assets_AssetGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetOdometers_Assets" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Assets_DepartmentLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Assets_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetTransfers_Assets" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_EmergencyMaintenances_Assets" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_PMTasks_Assets" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_AssetTransferLogs_DepartmentLocations1" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_ChangedParts_EmergencyMaintenances" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_ChangedParts_Parts" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_DepartmentLocations_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_DepartmentLocations_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_EmergencyMaintenances_Priorities" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Headers_EmergencyMaintenances" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_OrderItems_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Transactions_Parts" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Headers_Stocks" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Headers_Stocks1" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Headers_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Headers_TransactionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_PMScheduleModels_PMScheduleTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_PMTasks_PMScheduleTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_PMTasks_Tasks" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_WellLayers_RockTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_WellLayers_Wells" ManuallyRouted="false" />
+        <AssociationConnector Association="KazanNeftModel.FK_Wells_WellTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

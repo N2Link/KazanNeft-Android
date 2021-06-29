@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AvtAssetTranfer">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="10"
+        android:background="#E2231A"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="3dp"
+            android:paddingLeft="5dp"
+            android:layout_weight="8"
+            android:layout_height="wrap_content"
+            android:text="Asset Tranfer"
+            android:textSize="10pt"
+            android:textColor="@android:color/white"
+            android:layout_width="0dp" />
+        <Button
+            android:id="@+id/btn_back_transfer"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="6pt"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:layout_width="0dp" />
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selected Asset"
+        android:textSize="8pt"
+        android:textColor="#E2231A"
+        android:textStyle="bold"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#E2231A"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asset Name"
+                android:padding="5dp"
+                android:textSize="6pt"
+                android:textColor="@android:color/white"
+                android:background="@drawable/custom_label_red"/>
+            <View
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#E2331A"/>
+            <TextView
+                android:paddingTop="12dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/tv_asset_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Asset Name"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="#E2231A"
+                android:textSize="8pt"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#E2331A"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Department"
+                android:padding="5dp"
+                android:textSize="6pt"
+                android:textColor="@android:color/white"
+                android:background="@drawable/custom_label_red"/>
+            <View
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#E2331A"/>
+            <TextView
+                android:paddingTop="12dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/tv_department"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Department"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="#E2231A"
+                android:textSize="8pt"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#E2331A"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asset SN"
+            android:padding="5dp"
+            android:textSize="6pt"
+            android:textColor="@android:color/white"
+            android:background="@drawable/custom_label_red"/>
+        <View
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#E2331A"/>
+        <TextView
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/tv_assetsn_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dd/gg/nnnn"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:textColor="#E2231A"
+            android:textSize="8pt"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#E2331A"/>
+    </LinearLayout>
+    <View
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/custom_line"/>
+    <TextView
+        android:layout_marginTop="24dp"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Destination Department"
+        android:textSize="8pt"
+        android:textColor="#005BC9"
+        android:textStyle="bold"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#005BC9"/>
+    <LinearLayout
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination Department"
+                android:padding="5dp"
+                android:textSize="6pt"
+                android:textColor="@android:color/white"
+                android:background="@drawable/custom_label_2"/>
+            <Spinner
+                android:layout_marginTop="6dp"
+                android:id="@+id/spn_dm_new"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/custom_layout_2"
+                android:textColor="#E2231A"
+                android:textSize="8pt"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_label_2"
+                android:padding="5dp"
+                android:text="Destination Location"
+                android:textColor="@android:color/white"
+                android:textSize="6pt" />
+            <Spinner
+                android:layout_marginTop="6dp"
+                android:id="@+id/spn_location_new"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/custom_layout_2"
+                android:textColor="#E2231A"
+                android:textSize="8pt"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_label_2"
+                android:padding="5dp"
+                android:text="Asset SN"
+                android:textColor="@android:color/white"
+                android:textSize="6pt" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#005BC9" />
+
+            <TextView
+                android:id="@+id/tv_new_asset_sn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="5dp"
+                android:text="dd/gg/nnnn"
+                android:textColor="#005BC9"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#005BC9" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_marginLeft="48dp">
+            <Button
+                android:id="@+id/btn_submit_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:background="@drawable/custom_button_2"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/btn_cancel_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/custom_button"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

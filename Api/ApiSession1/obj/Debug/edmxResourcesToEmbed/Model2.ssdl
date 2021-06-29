@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Session3FinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AssetOdometers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetID" Type="bigint" Nullable="false" />
+    <Property Name="ReadDate" Type="date" Nullable="false" />
+    <Property Name="OdometerAmount" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetSN" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DepartmentLocationID" Type="bigint" Nullable="false" />
+    <Property Name="EmployeeID" Type="bigint" Nullable="false" />
+    <Property Name="AssetGroupID" Type="bigint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="WarrantyDate" Type="date" />
+  </EntityType>
+  <EntityType Name="PMScheduleModels">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PMScheduleTypeID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="PMScheduleTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PMTasks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetID" Type="bigint" Nullable="false" />
+    <Property Name="TaskID" Type="bigint" Nullable="false" />
+    <Property Name="PMScheduleTypeID" Type="bigint" Nullable="false" />
+    <Property Name="ScheduleDate" Type="date" />
+    <Property Name="ScheduleKilometer" Type="bigint" />
+    <Property Name="TaskDone" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AssetOdometers_Assets">
+    <End Role="Assets" Type="Self.Assets" Multiplicity="1" />
+    <End Role="AssetOdometers" Type="Self.AssetOdometers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AssetOdometers">
+        <PropertyRef Name="AssetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMScheduleModels_PMScheduleTypes">
+    <End Role="PMScheduleTypes" Type="Self.PMScheduleTypes" Multiplicity="0..1" />
+    <End Role="PMScheduleModels" Type="Self.PMScheduleModels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMScheduleTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMScheduleModels">
+        <PropertyRef Name="PMScheduleTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMTasks_Assets">
+    <End Role="Assets" Type="Self.Assets" Multiplicity="1" />
+    <End Role="PMTasks" Type="Self.PMTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMTasks">
+        <PropertyRef Name="AssetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMTasks_PMScheduleTypes">
+    <End Role="PMScheduleTypes" Type="Self.PMScheduleTypes" Multiplicity="1" />
+    <End Role="PMTasks" Type="Self.PMTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMScheduleTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMTasks">
+        <PropertyRef Name="PMScheduleTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMTasks_Tasks">
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+    <End Role="PMTasks" Type="Self.PMTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PMTasks">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Session3FinalModelStoreContainer">
+    <EntitySet Name="AssetOdometers" EntityType="Self.AssetOdometers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Assets" EntityType="Self.Assets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PMScheduleModels" EntityType="Self.PMScheduleModels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PMScheduleTypes" EntityType="Self.PMScheduleTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PMTasks" EntityType="Self.PMTasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AssetOdometers_Assets" Association="Self.FK_AssetOdometers_Assets">
+      <End Role="Assets" EntitySet="Assets" />
+      <End Role="AssetOdometers" EntitySet="AssetOdometers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMScheduleModels_PMScheduleTypes" Association="Self.FK_PMScheduleModels_PMScheduleTypes">
+      <End Role="PMScheduleTypes" EntitySet="PMScheduleTypes" />
+      <End Role="PMScheduleModels" EntitySet="PMScheduleModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMTasks_Assets" Association="Self.FK_PMTasks_Assets">
+      <End Role="Assets" EntitySet="Assets" />
+      <End Role="PMTasks" EntitySet="PMTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMTasks_PMScheduleTypes" Association="Self.FK_PMTasks_PMScheduleTypes">
+      <End Role="PMScheduleTypes" EntitySet="PMScheduleTypes" />
+      <End Role="PMTasks" EntitySet="PMTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMTasks_Tasks" Association="Self.FK_PMTasks_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="PMTasks" EntitySet="PMTasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
